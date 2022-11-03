@@ -1,0 +1,78 @@
+<%- include('../layout/header-client') %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-4 foto-product">
+            <img src="/<%= product.image %>" class="img-thumbnail" alt="AETHER™ PLUS 85">
+        </div>
+        <div class="col-8">
+            <div class="jumbotron">
+                <h1 class="fs-3 fw-bold">AETHER™ PLUS 85</h1>
+                <p class="fs-4 fw-semibold">Rp. <%= product.price %></p>
+                <p class="fs-6">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-regular fa-star-half-stroke"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <a href="#" class="fs-6 txt rev">1 Review (s)</a>
+                </p>
+                <p class="fs-6 txt">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias in explicabo
+                    facere dolorem. Pariatur corrupti repudiandae accusamus vel quos expedita, perferendis
+                    voluptatibus! Asperiores maxime voluptate unde exercitationem. Sint maxime quasi magnam eos quam
+                    similique ut impedit, asperiores a quos, quae molestias. Nam, aliquam distinctio suscipit
+                    dignissimos blanditiis reiciendis odit? Quibusdam?</p>
+                <p class="fs-6 txt"><input type="checkbox" name="" id="" checked disabled
+                        class="form-check-input mt-0">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque, modi!</p>
+                <p class="fs-6 txt"><input type="checkbox" name="" id="" checked disabled
+                        class="form-check-input mt-0">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. </p>
+                <p class="fs-6 txt"><input type="checkbox" name="" id="" checked disabled
+                        class="form-check-input mt-0">
+                    Lorem ipsum, dolor sit amet consectetur!</p>
+                <hr>
+                <div class="row">
+                    <div class="col">
+                        <p class="fs-5 txt">Qty:</p>
+                    </div>
+                    <div class="col">
+                        <input type="text" id="disabledTextInput" class="form-control">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <p class="fs-5 txt">Size:</p>
+                    </div>
+                    <div class="col">
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>Choose Your Size</option>
+                            <option value="s">S</option>
+                            <option value="m">M</option>
+                            <option value="l">L</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <p class="fs-5 txt">Color:</p>
+                    </div>
+                    <div class="col">
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>Choose Your Color</option>
+                            <option value="black">Black</option>
+                            <option value="red">Red</option>
+                            <option value="blue">Blue</option>
+                        </select>
+                    </div>
+                </div>
+                <hr>
+                <a class="btn" href="check-out.html" role="button">Buy</a>
+                <i class="fa-solid fa-heart ms-3"></i>
+                <i class="fa-sharp fa-solid fa-chart-simple ms-3"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('../layout/footer-client') %>

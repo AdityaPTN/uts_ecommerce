@@ -1,0 +1,115 @@
+<%- include('../layout/header-client') %>
+    
+    <!-- Banner -->
+    <div class="container-fluid">
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="jumbotron jumbotron-fluid text-light">
+                        <div class="container text-center">
+                            <h1 class="display-4">Outdoor Aptitide,</h1>
+                            <h1 class="display-4">Everyday</h1>
+                            <p class="lead">THE NEW 24/7 SERIES</p>
+                            <p>No matter what your day throws at you-friend in town, last-minute</p>
+                            <p>date, soccer league after work-there's a new 24/7 pack that's ready</p>
+                            <p>to help you find your adventure. Thoughtfully featuring a variety of</p>
+                            <p>pack sizes and ample everyday organization.</p>
+                            <a class="btn shop-series" href="#" role="button">Shop The Series</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="jumbotron jumbotron-fluid text-light">
+                        <div class="container text-center">
+                            <h1 class="display-4">Outdoor Aptitide,</h1>
+                            <h1 class="display-4">Everyday</h1>
+                            <p class="lead">THE NEW 24/7 SERIES</p>
+                            <p>No matter what your day throws at you-friend in town, last-minute</p>
+                            <p>date, soccer league after work-there's a new 24/7 pack that's ready</p>
+                            <p>to help you find your adventure. Thoughtfully featuring a variety of</p>
+                            <p>pack sizes and ample everyday organization.</p>
+                            <a class="btn shop-series" href="#" role="button">Shop The Series</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="jumbotron jumbotron-fluid text-light">
+                        <div class="container text-center">
+                            <h1 class="display-4">Outdoor Aptitide,</h1>
+                            <h1 class="display-4">Everyday</h1>
+                            <p class="lead">THE NEW 24/7 SERIES</p>
+                            <p>No matter what your day throws at you-friend in town, last-minute</p>
+                            <p>date, soccer league after work-there's a new 24/7 pack that's ready</p>
+                            <p>to help you find your adventure. Thoughtfully featuring a variety of</p>
+                            <p>pack sizes and ample everyday organization.</p>
+                            <a class="btn shop-series" href="#" role="button">Shop The Series</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+    <!-- /Banner -->
+    
+    <!-- Category -->
+    <div class="container text-light">
+        <div class="category baris-satu">
+                <div class="categori-item text-center satu">
+                    <h3>Lifestyle</h3>
+                    <h3>Day Packs</h3>
+                    <a href="#" class="btn text-light show-now">Shop Now</a>
+                </div>
+                <div class="categori-item text-center dua">
+                    <h3>Luggage &</h3>
+                    <h3>Travel Packs</h3>
+                    <a href="#" class="btn text-light show-now">Shop Now</a>
+                </div>
+        </div>
+        <div class="category baris-dua">
+            <div class="categori-item text-center tiga">
+                <h3>Hiking Packs</h3>
+                <a href="hiking-packs.html" class="btn text-light show-now">Shop Now</a>
+            </div>
+            <div class="categori-item text-center empat">
+                <h3>Backpacking</h3>
+                <h3>Packs</h3>
+                <a href="#" class="btn text-light show-now">Shop Now</a>
+            </div>
+        </div>
+    </div>
+    <!-- /Category -->
+
+    <div class="card-group">
+        <div class="container product my-3 g-4">
+        <% products.forEach((item) => { %>
+                <div class="card" style="width: 18rem;">
+                    <img src="/<%= item.image %>" class="card-img-top" alt="...">
+                    <div class="card-body text-center">
+                        <h5 class="card-title"><%= item.name %></h5>
+                        <p class="card-text">Rp. <%= item.price %></p>
+                        <a href="/<%= item._id %>" class="btn text-light btn-dark">Add to Cart</a>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+        </div>
+
+<%- include('../layout/footer-client') %>

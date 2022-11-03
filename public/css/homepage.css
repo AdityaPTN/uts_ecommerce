@@ -1,0 +1,93 @@
+/* MenuBar */
+.nav-link {
+    color: white !important;
+    border-radius: 10px !important;
+}
+.nav-link:hover {
+    background: rgba(0, 0, 0, 0.5) !important;
+    border-radius: 10px !important;
+}
+
+/* SearchBar */
+.pencarian {
+    border-radius: 30px !important;
+    width: 350px !important;
+    height: 38px;
+}
+
+/* Banner */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: #d9c89d !important;
+    height: 50px !important;
+    width: 40px !important;
+    border-radius: 5px;
+}
+.display-4 {
+    text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.5);
+}
+.shop-series {
+    background-color: #d9c89d !important;
+}
+.jumbotron {
+    background-image: url(../img/banner.jpg);
+    height: 100vh;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    /* background-color: 5px solid black !important; */
+}
+.jumbotron .container h1 {
+    font-weight: 600;
+}
+.jumbotron .container .lead {
+    font-weight: 500;
+}
+
+/* Category */
+.category {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 15px;
+    padding: 10px;
+}
+.categori-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 400px !important;
+    height: 200px;
+}
+.container .category .satu {
+    background-image: url(../img/img1.jpg);
+    background-size: cover;
+}
+.container .category .dua {
+    background-image: url(../img/img2.jpg);
+    background-size: cover;
+}
+.container .category .tiga {
+    background-image: url(../img/img3.jpg);
+    background-size: cover;
+}
+.container .category .empat {
+    background-image: url(../img/img4.jpg);
+    background-size: cover;
+}
+.show-now {
+    background-color: #fe8f1c !important;
+}
+.container .category .categori-item h3 {
+    text-shadow: 4px 4px 7px rgba(0, 0, 0, 0.5) !important;
+}
+.container .category .categori-item a:hover {
+    background-color: rgba(0, 0, 0, 0.7) !important;
+}
+
+.product {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 10px;
+}

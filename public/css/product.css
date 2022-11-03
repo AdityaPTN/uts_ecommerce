@@ -1,0 +1,34 @@
+.container {
+    margin-top: 10px;
+}
+.foto-product {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.fw-semibold {
+    color: rgb(255, 36, 36);
+}
+.text-decoration-line-through {
+    color: #7c7c7c;
+}
+a .icon{
+    color: red;
+}
+.txt {
+    color: #aaaaaa;
+}
+.rev {
+    text-decoration: none;
+}
+.rev:hover {
+    color: #aaaaaad2;
+}
+.btn {
+    background-color: #fe8f1c;
+    color: white;
+    width: 130px;
+}
+.btn:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
