@@ -65,16 +65,18 @@
                             <small><span>Rp.</span><%= item.price %></small>
                             <br>
                         <form action="/cart/remove_product" method="post">
-                            <input type="hidden" name="id" id="<%= item.id %>">
+                            <input type="hidden" name="id" value="<%= item.id %>">
                             <input type="submit" name="remove_btn" class="btn btn-danger btn-sm" value="Remove">
                         </form>
                     </p>
                     </div>
                 </td>
                 <td>
-                    <form action="/cart/remove_product" method="post">
-                        <input type="number" name="quantity" value="1">
-                        <input type="text">
+                    <form action="/cart/edit-quantity" method="post">
+                        <input type="hidden" name="id" value="<%= item.id %>">
+                        <input type="submit" name="decrease_quantity" value="-">
+                        <input type="number" name="quantity" value="<%= item.quantity %>" readonly>
+                        <input type="submit" name="increase_quantity" value="+">
                     </form>
                 </td>
                 <td>

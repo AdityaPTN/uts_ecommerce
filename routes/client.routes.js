@@ -11,7 +11,7 @@ app.use(session({
 }));
 
 const isProductInCart = (cart, id)=> {
-    for(let i=0; i<cart.length;i++){
+    for(let i=0;i<cart?.length;i++){
         if(cart[i].id == id){
             return true;
         }
@@ -97,7 +97,6 @@ router.post('/add_to_cart', (req,res)=>{
 router.post('/cart/remove_product', (req,res)=>{
     var id = req.body.id;
     var cart = req.session.cart;
-
     for(let i=0;i<cart.length;i++){
         if(cart[i].id == id){
             cart.splice(cart.indexOf(i),1);
@@ -106,6 +105,39 @@ router.post('/cart/remove_product', (req,res)=>{
 
     calculateTotal(cart, req);
     res.redirect('/cart')
+})
+
+router.post('/cart/edit-quantity', (req,res)=>{
+    var id = req.body.id;
+    var quantity = req.body.quantity;
+    var increase_btn = req.body.increase_quantity;
+    var decrease_btn = req.body.decrease_quantity;
+
+    var cart = req.session.cart;
+
+    if(increase_btn){
+        for(let i=0;i<cart.length;i++){
+            if(cart[i].id == id){
+                if(cart[i].quantity > 0){
+                    cart[i].quantity = parseInt(cart[i].quantity)+1;
+                }
+            }
+        }
+    }
+
+    if(decrease_btn){
+        for(let i=0;i<cart.length;i++){
+            if(cart[i].id == id){
+                if(cart[i].quantity > 1){
+                    cart[i].quantity = parseInt(cart[i].quantity)-1;
+                }
+            }
+        }
+    }
+
+    calculateTotal(cart,req);
+    res.redirect('/cart')
+
 })
 
 module.exports = router;
