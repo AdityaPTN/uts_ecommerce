@@ -22,7 +22,7 @@
                             <p>date, soccer league after work-there's a new 24/7 pack that's ready</p>
                             <p>to help you find your adventure. Thoughtfully featuring a variety of</p>
                             <p>pack sizes and ample everyday organization.</p>
-                            <a class="btn shop-series" href="#" role="button">Shop The Series</a>
+                            <a class="btn shop-series" href="/checkout" role="button">Shop The Series</a>
                         </div>
                     </div>
                 </div>
@@ -99,13 +99,13 @@
 
     <div class="card-group">
         <div class="container product my-3 g-4">
-        <% products.forEach((item) => { %>
+        <% barang.forEach((item) => { %>
                 <div class="card" style="width: 18rem;">
                     <img src="/<%= item.image %>" class="card-img-top" alt="...">
                     <div class="card-body text-center">
                         <h5 class="card-title"><%= item.name %></h5>
                         <p class="card-text">Rp. <%= item.price %></p>
-                        <a href="/<%= item._id %>" class="btn text-light btn-dark">Add to Cart</a>
+                        <a href="/shop/<%= item._id %>" class="btn text-light btn-dark">Detail</a>
                     </div>
                 </div>
             <% }) %>

@@ -5,17 +5,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Geiser Store | Adventure Product</title>
-    <link rel="stylesheet" href="/css/<%= style %>.css">
+    <link rel="stylesheet" href="">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
 </head>
 
-<body class="bg-dark">
+<body>
 
     <!-- MenuBar -->
-    <div class="container-fluid">
         <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
             <div class="container">
                 <a class="navbar-brand me-5" href="/">Geiser</a>
@@ -42,5 +41,62 @@
                 </div>
             </div>
         </nav>
-    </div>
     <!-- /MenuBar -->
+
+<section class="container mt-2 my-3 py-5">
+    <% if (cart !== undefined) { %>
+    <div class="container mt-2">
+        <h4>Your Cart</h4>
+    </div>
+    
+    <table class="pt-5 table" style="width: 100%">
+        <tr>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Subtotal</th>
+        </tr>
+             
+            <% cart.forEach(function(item) {%> 
+            <tr>
+                <td>
+                    <div>
+                        <p><img src="/<%= item.image %>" width="50" class="img-thumbnail">
+                        <%= item.name %>
+                            <small><span>Rp.</span><%= item.price %></small>
+                            <br>
+                        <form action="/cart/remove_product" method="post">
+                            <input type="hidden" name="id" id="<%= item.id %>">
+                            <input type="submit" name="remove_btn" class="btn btn-danger btn-sm" value="Remove">
+                        </form>
+                    </p>
+                    </div>
+                </td>
+                <td>
+                    <form action="/cart/remove_product" method="post">
+                        <input type="number" name="quantity" value="1">
+                        <input type="text">
+                    </form>
+                </td>
+                <td>
+                    <span>Rp.<%= item.price * item.quantity %></span>
+                </td>
+            </tr>
+            <% }) %>
+        </table>
+        
+        
+        
+        <div class="cart-total">
+            <table>
+                <tr>
+                    <td>Total</td>
+                    <td>Rp. <%= total %></td>
+                </tr>
+            </table>
+        </div>
+        <% } else { %> 
+            <h1 class="text-center text-secondary mt-5">Cart Empty</h1>
+        <% } %> 
+</section>
+
+<%- include('../layout/footer-client') %>

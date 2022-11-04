@@ -32,3 +32,6 @@ a .icon{
 .btn:hover {
     background-color: rgba(0, 0, 0, 0.2);
 }
+.fa {
+    color: white;
+}
