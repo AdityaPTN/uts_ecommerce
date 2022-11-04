@@ -53,67 +53,8 @@
         </div> 
     <% } %> 
     
-    <% if (cart !== undefined) { %>
-    <div class="container mt-2">
-        <h4>Your Cart</h4>
-    </div>
-    
-    <table class="pt-5 table" style="width: 100%">
-        <tr>
-            <th>Product</th>
-            <th>Quantity</th>
-            <th>Subtotal</th>
-        </tr>
-             
-            <% cart.forEach(function(item) {%> 
-            <tr>
-                <td>
-                    <div>
-                        <p><img src="/<%= item.image %>" width="50" class="img-thumbnail">
-                        <%= item.name %>
-                            <small><span>Rp.</span><%= item.price %></small>
-                            <br>
-                        <form action="/cart/remove_product" method="post">
-                            <input type="hidden" name="id" value="<%= item.id %>">
-                            <input type="submit" name="remove_btn" class="btn btn-danger btn-sm" value="Remove">
-                        </form>
-                    </p>
-                    </div>
-                </td>
-                <td>
-                    <form action="/cart/edit-quantity" method="post">
-                        <input type="hidden" name="id" value="<%= item.id %>">
-                        <input type="submit" name="decrease_quantity" value="-">
-                        <input type="number" name="quantity" value="<%= item.quantity %>" readonly>
-                        <input type="submit" name="increase_quantity" value="+">
-                    </form>
-                </td>
-                <td>
-                    <span>Rp.<%= item.price * item.quantity %></span>
-                </td>
-            </tr>
-            <% }) %>
-        </table>
-        
-        
-        
-        <div class="cart-total">
-            <table>
-                <tr>
-                    <td>Total</td>
-                    <td>Rp. <%= total %></td>
-                </tr>
-            </table>
-        </div>
+        <h1>Your Code: <%= order[0].code %> </h1>
 
-        <form action="/cart/checkout" method="post">
-            <input type="hidden" name="product_list" value="<% cart.forEach(item => { %><%= item.name %>  - Rp. <%= item.price  %> - <%= item.quantity %>,<% }) %>">
-            <input type="hidden" name="total" value="<%= total %>">
-            <input type="submit" name="checkout" value="Checkout" class="btn btn-warning">
-        </form>
-        <% } else { %> 
-            <h1 class="text-center text-secondary mt-5">Cart Empty</h1>
-        <% } %> 
 </section>
 
 <%- include('../layout/footer-client') %>

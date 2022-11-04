@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const session = require('express-session')
 const Product = require('../models/products.models');
+const Order = require('../models/orders.models');
 const app = express();
 
 app.use(session({
@@ -27,6 +28,20 @@ const calculateTotal = (cart,req)=>{
     req.session.total = total;
     return total;
 }
+
+// generate Code
+const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+const generateCode = ()=>{
+    let result = '';
+    let length = 6;
+    const charactersLength = characters.length;
+    for (let i=0; i<length;i++){
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+}
+
 
 router.get('/', (req,res)=>{
     Product.find().exec((err, products)=>{
@@ -138,6 +153,43 @@ router.post('/cart/edit-quantity', (req,res)=>{
     calculateTotal(cart,req);
     res.redirect('/cart')
 
+})
+
+router.post('/cart/checkout',(req,res)=>{
+    const order = new Order({
+        product_list: req.body.product_list,
+        total: req.body.total,
+        status: "Approve Order",
+        code: generateCode(),
+    });
+    order.save((err)=>{
+        if(err){
+            res.json({message:err.message, type: 'danger'})
+        }else{
+            req.session.message = {
+                type: 'success',
+                message: 'Checkout Succeccfully'
+            }
+            res.redirect('/cart/success');
+        }
+    })
+})
+
+router.get('/cart/success',(req,res)=>{
+    Order.find().exec((err, order)=>{
+        res.render('client/cart-success',{
+            order:order,
+        })
+    })
+})
+
+router.get('/cart/code/:id', (req,res)=>{
+    let id = req.params.id;
+    Order.findById(id, (err,order)=>{
+        if(err){
+            res.redirect('/cart')
+        }
+    })
 })
 
 module.exports = router;

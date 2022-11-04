@@ -1,0 +1,61 @@
+<%- include('../../layout/header') %>
+
+<div class="container my-4">
+    <div class="row my-4">
+        <div class="col-lg-12">
+            <% if (message) {%>
+                <div class="alert alert-dismissible fade show alert-<%= message.type  %>" role="alert">
+                    <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button>
+                    <strong><%= message.message %> </strong>
+                </div> 
+            <% } %> 
+            <div class="table-responsive">
+                <% if (orders != '') { %>
+                    <table class="table table-striped text-center my-4">
+                        <thead>
+                            <tr class="table-dark">
+                                <th class="text-center">No. Order</th>
+                                <th class="text-center">Product List</th>
+                                <th class="text-center">Total</th>
+                                <th class="text-center">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% orders.forEach((item, index) => { %>
+                            <tr class="align-middle">
+                                <td><%= index+1 %> </td>
+                                <td><%= item.product_list  %></td>
+                                <td>Rp. <%= item.total  %></td>
+                                <td>
+                                    <form action="/orders/update/<%= item._id  %>" method="post">
+                                        <input type="hidden" name="product_list" value="<%= item.product_list %>">
+                                        <input type="hidden" name="total" value="<%= item.total %>">
+                                        <input type="hidden" name="code" value="<%= item.code %>">
+                                    <% if (item.status === "Approve Order") { %>
+                                        <input type="hidden" name="status" value="On Package">
+                                        <input type="submit" value="<%= item.status %>" class="btn btn-warning">
+                                    <% } else if (item.status === "On Package") {%>
+                                        <input type="hidden" name="status" value="Ready">
+                                        <input type="submit" value="<%= item.status %>" class="btn btn-primary">
+                                    <% } else {%>
+                                        <input type="#" value="<%= item.status %>" class="btn btn-success">
+                                    <% } %> 
+                                    </form>
+                                </td>
+                            </tr>
+                            <% }) %>
+                        </tbody>
+                    </table>
+                <% } else {%>
+                    <h1 class="text-center text-secondary mt-5">No Orders found in the database</h1>
+                <% } %> 
+                
+            </div> 
+        </div>
+    </div>
+</div>
+
+<%- include('../../layout/footer') %> 
+
+
+    
