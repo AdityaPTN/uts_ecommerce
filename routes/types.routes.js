@@ -16,6 +16,7 @@ router.get('/types', (req, res)=>{
     })
 })
 
+// ADD
 router.get('/types/add', (req,res)=>{
     Category.find().exec((err,categories)=>{
         if(err){
@@ -52,6 +53,7 @@ router.post('/types/add',(req, res)=>{
     })
 });
 
+// UPDATE
 router.get('/types/edit/:id', (req, res)=>{
     let id = req.params.id;
     Type.findById(id, (err,type)=>{
@@ -87,6 +89,7 @@ router.post('/types/update/:id', (req, res) =>{
     })
 })
 
+// DELETE
 router.get('/types/delete/:id', (req,res)=>{
     let id = req.params.id;
     Type.findByIdAndRemove(id, (err, result) => {

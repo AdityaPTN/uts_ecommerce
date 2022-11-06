@@ -11,7 +11,7 @@
             <% } %> 
             <a href="/categories/add" class="btn btn-success my-3">Add Category</a>
             <div class="table-responsive">
-                <% if (categories != '') { %>
+                <% if (kategori!= '') { %>
                     <table class="table table-striped text-center my-4">
                         <thead>
                             <tr class="table-dark">
@@ -21,13 +21,13 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <% categories.forEach((item, index) => { %>
+                            <% kategori.forEach((ka,index) => { %>
                             <tr class="align-middle">
-                                <td><%= index+1 %> </td>
-                                <td><%= item.name  %></td>
+                                <td><%- index+1 %></td>
+                                <td><%- ka.name %></td>
                                 <td>
-                                    <a href="/categories/edit/<%= item._id  %>" class="text-success"><i class="fas fa-edit fa-lg mx-1"></i></a>
-                                    <a href="/categories/delete/<%= item._id  %>" class="text-danger"><i class="fas fa-trash fa-lg mx-1"></i></a>
+                                    <a href="/categories/edit/<%= ka._id  %>" class="text-success"><i class="fas fa-edit fa-lg mx-1"></i></a>
+                                    <a href="/categories/delete/<%= ka._id %>" class="text-danger"><i class="fas fa-trash fa-lg mx-1"></i></a>
                                 </td>
                             </tr>
                             <% }) %>

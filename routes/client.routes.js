@@ -115,11 +115,10 @@ router.post('/cart/remove_product', (req,res)=>{
     for(let i=0;i<cart.length;i++){
         if(cart[i].id == id){
             cart.splice(cart.indexOf(i),1);
+            res.redirect('/cart')
         }
     }
-
     calculateTotal(cart, req);
-    res.redirect('/cart')
 })
 
 router.post('/cart/edit-quantity', (req,res)=>{
@@ -180,6 +179,7 @@ router.get('/cart/success',(req,res)=>{
         res.render('client/cart-success',{
             order:order,
         })
+        req.session.destroy();
     })
 })
 
@@ -188,6 +188,47 @@ router.get('/cart/code/:id', (req,res)=>{
     Order.findById(id, (err,order)=>{
         if(err){
             res.redirect('/cart')
+        }
+    })
+})
+
+router.get('/check-order', (req,res)=>{
+    res.render('client/check-order');
+})
+
+router.post('/check-order', (req,res)=>{
+    Order.findOne({code: req.body.code}, (err,result)=>{
+        if(err){
+            console.log(err);
+            res.redirect('/check-order');
+        }else{
+            if(result === null){
+                res.redirect('/check-order');
+            }else{
+                res.render('client/take-order', {
+                    order:result,
+                })
+            }
+        }
+    })
+})
+
+router.post('/take-order/:id',(req,res)=>{
+    let id = req.params.id;
+    Order.findByIdAndUpdate(id, {
+        product_list: req.body.product_list,
+        total: req.body.total,
+        status: req.body.status,
+        code: req.body.code,
+    }, (err,result)=>{
+        if(err){
+            res.json({message: err.message, type:'danger'})
+        } else {
+            req.session.message = {
+                type: 'success',
+                message: 'Order Taken!'
+            };
+            res.redirect('/check-order')
         }
     })
 })

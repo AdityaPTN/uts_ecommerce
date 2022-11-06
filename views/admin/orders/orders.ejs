@@ -37,10 +37,18 @@
                                     <% } else if (item.status === "On Package") {%>
                                         <input type="hidden" name="status" value="Ready">
                                         <input type="submit" value="<%= item.status %>" class="btn btn-primary">
-                                    <% } else {%>
+                                    <% } else if (item.status === "Ready"){%>
                                         <input type="#" value="<%= item.status %>" class="btn btn-success">
-                                    <% } %> 
+                                    <% } %>  
                                     </form>
+                                    <% if (item.status === "Order Taken!") { %>
+                                        <form action="/orders/add_to_history" method="post">
+                                            <input type="hidden" name="id" value="<%= item._id %>">
+                                            <input type="hidden" name="product_list" value="<%= item.product_list %>">
+                                            <input type="hidden" name="total" value="<%= item.total %>">
+                                            <input type="submit" value="<%= item.status %>" class="btn btn-warning">
+                                        </form>
+                                    <% } %>
                                 </td>
                             </tr>
                             <% }) %>

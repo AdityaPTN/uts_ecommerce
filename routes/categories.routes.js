@@ -9,12 +9,13 @@ router.get('/categories', (req, res)=>{
         } else {
             res.render('admin/categories/categories', {
                 title: 'Category List',
-                categories: categories,
+                kategori: categories,
             })
         }
     })
 })
 
+// ADD
 router.get('/categories/add', (req,res)=>{
     res.render('admin/categories/add_category', {title: 'Add Category'})
 })
@@ -36,6 +37,7 @@ router.post('/categories/add',(req, res)=>{
     })
 });
 
+// EDIT
 router.get('/categories/edit/:id', (req, res)=>{
     let id = req.params.id;
     Category.findById(id, (err,category)=>{
@@ -54,6 +56,7 @@ router.get('/categories/edit/:id', (req, res)=>{
     })
 })
 
+// UPDATE
 router.post('/categories/update/:id', (req, res) =>{
     let id = req.params.id;
     Category.findByIdAndUpdate(id, {
@@ -71,6 +74,7 @@ router.post('/categories/update/:id', (req, res) =>{
     })
 })
 
+// DELETE
 router.get('/categories/delete/:id', (req,res)=>{
     let id = req.params.id;
     Category.findByIdAndRemove(id, (err, result) => {
